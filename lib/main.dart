@@ -1,7 +1,7 @@
 import 'package:crudfirebase/firebase_options.dart';
 import 'package:crudfirebase/pages/homepage.dart';
 import 'package:crudfirebase/pages/login_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:crudfirebase/pages/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -30,20 +30,14 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFF6A1B9A),
           foregroundColor: Colors.white,
         ),
+        buttonTheme: const ButtonThemeData(
+          buttonColor: Color(0xFF6A1B9A),
+          textTheme: ButtonTextTheme.primary,
+        ),
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Scaffold(
-                body: Center(child: CircularProgressIndicator()),
-              );
-            }
-            return snapshot.hasData ? const HomePage() : const LoginPage();
-          },
-        ),
+        '/': (context) => const SplashScreen(), // Start with splash
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
       },
