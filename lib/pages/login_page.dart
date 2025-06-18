@@ -2,6 +2,7 @@ import 'package:crudfirebase/pages/homepage.dart';
 import 'package:crudfirebase/pages/signup_page.dart';
 import 'package:crudfirebase/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   final bool showSuccessMessage;
@@ -69,14 +70,17 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: const Text("Login"),
         centerTitle: true,
-        backgroundColor: Color(0xFF6A1B9A),
+        backgroundColor: const Color(0xFF6A1B9A),
         foregroundColor: Colors.white,
-        automaticallyImplyLeading: false, // Removes back arrow
+        automaticallyImplyLeading: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
-          child: Center(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 40.0,
+            ),
             child: Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
@@ -87,7 +91,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.lock, size: 64, color: Color(0xFF6A1B9A)),
+                    // Animation inside the card
+                    SizedBox(
+                      height: 180,
+                      child: Lottie.asset('assets/animations/login.json'),
+                    ),
                     const SizedBox(height: 20),
                     TextField(
                       controller: _emailController,
@@ -117,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                               icon: const Icon(Icons.login),
                               label: const Text('Login'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF6A1B9A),
+                                backgroundColor: const Color(0xFF6A1B9A),
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14,
@@ -137,7 +145,8 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       },
                       child: Row(
-                        children: [
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
                           Text(
                             "Don't have an account?",
                             style: TextStyle(

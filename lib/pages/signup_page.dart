@@ -1,6 +1,7 @@
 import 'package:crudfirebase/pages/login_page.dart';
 import 'package:crudfirebase/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -55,13 +56,16 @@ class _SignupPageState extends State<SignupPage> {
       appBar: AppBar(
         title: const Text("Sign Up"),
         centerTitle: true,
-        backgroundColor: Color(0xFF6A1B9A),
+        backgroundColor: const Color(0xFF6A1B9A),
         foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
-          child: Center(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 40.0,
+            ),
             child: Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
@@ -72,10 +76,10 @@ class _SignupPageState extends State<SignupPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(
-                      Icons.person_add,
-                      size: 64,
-                      color: Color(0xFF6A1B9A),
+                    // Signup animation inside the card
+                    SizedBox(
+                      height: 190,
+                      child: Lottie.asset('assets/animations/signup1.json'),
                     ),
                     const SizedBox(height: 20),
                     TextField(
@@ -106,7 +110,7 @@ class _SignupPageState extends State<SignupPage> {
                               icon: const Icon(Icons.app_registration),
                               label: const Text('Sign Up'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF6A1B9A),
+                                backgroundColor: const Color(0xFF6A1B9A),
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 14,
